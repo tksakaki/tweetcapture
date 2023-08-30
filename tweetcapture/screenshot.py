@@ -174,6 +174,7 @@ class TweetCapture:
         HIDE_ITEMS_XPATH = [
             '/html/body/div/div/div/div[1]',
             '/html/body/div/div/div/div[2]/header', '/html/body/div/div/div/div[2]/main/div/div/div/div/div/div[1]',
+            '/html/body/div/div/div/div[2]/main/div/div/div/div/div/section/div/div/div/div/div[1]/div/div/article/div/div/div[3]/div[4]/div',
             ".//ancestor::div[@data-testid = 'tweetButtonInline']/../../../../../../../../../../.."
         ]
         for item in HIDE_ITEMS_XPATH:
@@ -181,6 +182,7 @@ class TweetCapture:
                 element = driver.find_element(By.XPATH, item)
                 driver.execute_script("""
                 arguments[0].style.display="none";
+                arguments.style.display="none";
                 """, element)
             except:
                 continue
@@ -198,6 +200,7 @@ class TweetCapture:
             return """
             arguments[0].style.display="none";
             arguments[1].style.display="none";
+            arguments.style.display="none";
             """
         else:
             return """
